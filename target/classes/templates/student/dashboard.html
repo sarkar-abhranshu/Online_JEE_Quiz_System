@@ -1,0 +1,86 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Student Dashboard</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1>Online Quiz System</h1>
+                <div class="nav-links">
+                    <span th:text="'Welcome, ' + ${student.name}"></span>
+                    <a th:href="@{/student/quizzes}" class="btn btn-primary">Browse Quizzes</a>
+                    <a th:href="@{/logout}" class="btn btn-secondary">Logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>My Dashboard</h2>
+                <a th:href="@{/student/history}" class="btn btn-secondary">Full History</a>
+            </div>
+
+            <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+            <div th:if="${error}"   class="alert alert-error"   th:text="${error}"></div>
+
+            <!-- Quick stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 th:text="${#lists.size(recentResults)}">0</h3>
+                    <p>Recent Attempts</p>
+                </div>
+                <div class="stat-card">
+                    <h3 th:text="${recentResults.isEmpty()} ? 'N/A' : ${#numbers.formatDecimal(avgPercentage, 1, 1)} + '%'">N/A</h3>
+                    <p>Avg Percentage</p>
+                </div>
+            </div>
+
+            <!-- Recent Results -->
+            <div class="section-header">
+                <h3>Recent Results</h3>
+            </div>
+
+            <div th:if="${#lists.isEmpty(recentResults)}" class="empty-state">
+                <p>You haven't attempted any quizzes yet. <a th:href="@{/student/quizzes}">Browse available quizzes</a>.</p>
+            </div>
+
+            <div th:if="${!#lists.isEmpty(recentResults)}" class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Quiz</th>
+                            <th>Score</th>
+                            <th>Percentage</th>
+                            <th>Submitted</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="result : ${recentResults}">
+                            <td th:text="${result.quiz.title}"></td>
+                            <td th:text="${result.score} + ' / ' + ${result.totalMarks}"></td>
+                            <td>
+                                <span
+                                    th:classappend="${result.percentage >= 50} ? 'badge badge-active' : 'badge badge-inactive'"
+                                    th:text="${#numbers.formatDecimal(result.percentage, 1, 1)} + '%'"
+                                ></span>
+                            </td>
+                            <td th:text="${#temporals.format(result.submittedAt, 'dd MMM yyyy HH:mm')}"></td>
+                            <td>
+                                <a th:href="@{/student/result/{id}(id=${result.id})}" class="btn btn-small">View</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Online Quiz System</p>
+        </footer>
+    </body>
+</html>

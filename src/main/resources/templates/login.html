@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login - Online Quiz System</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body class="login-page">
+        <div class="login-container">
+            <div class="login-box">
+                <h1>Online Quiz System</h1>
+                <h2>Login</h2>
+
+                <div th:if="${param.error}" class="alert alert-error">
+                    Invalid email or password!
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success">
+                    You have been logged out successfully.
+                </div>
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label for="username">Email:</label>
+                        <input
+                            type="email"
+                            id="username"
+                            name="username"
+                            required
+                            placeholder="Enter your email"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            placeholder="Enter your password"
+                        />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Login
+                    </button>
+                </form>
+
+                <div class="demo-credentials">
+                    <h3>Demo Credentials:</h3>
+                    <div class="credentials-box">
+                        <p><strong>Admin:</strong></p>
+                        <p>Email: admin@quiz.com</p>
+                        <p>Password: password</p>
+                    </div>
+                    <div class="credentials-box">
+                        <p><strong>Student:</strong></p>
+                        <p>Email: john@student.com</p>
+                        <p>Password: password</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Online Quiz System - OOAD Project</p>
+        </footer>
+    </body>
+</html>

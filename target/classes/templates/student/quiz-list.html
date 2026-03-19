@@ -1,0 +1,68 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Available Quizzes</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1>Online Quiz System</h1>
+                <div class="nav-links">
+                    <a th:href="@{/student/dashboard}" class="btn btn-secondary">Dashboard</a>
+                    <a th:href="@{/logout}" class="btn btn-secondary">Logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Available Quizzes</h2>
+            </div>
+
+            <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+
+            <div th:if="${#lists.isEmpty(quizzes)}" class="empty-state">
+                <p>No quizzes are available at this time. Check back later!</p>
+            </div>
+
+            <div class="quiz-grid">
+                <div th:each="quiz : ${quizzes}" class="quiz-card">
+                    <div class="quiz-header">
+                        <h4 th:text="${quiz.title}"></h4>
+                        <span class="badge badge-active">Active</span>
+                    </div>
+
+                    <p class="quiz-description" th:text="${quiz.description}"></p>
+
+                    <div class="quiz-info">
+                        <p>
+                            <strong>Duration:</strong>
+                            <span th:text="${quiz.durationMinutes} + ' minutes'"></span>
+                        </p>
+                        <p>
+                            <strong>Questions:</strong>
+                            <span th:text="${#lists.size(quiz.questions)}"></span>
+                        </p>
+                        <p>
+                            <strong>Total Marks:</strong>
+                            <span th:text="${quiz.totalMarks}"></span>
+                        </p>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <a th:href="@{/student/attempt/{id}(id=${quiz.id})}" class="btn btn-primary btn-small">
+                            Start Quiz
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Online Quiz System</p>
+        </footer>
+    </body>
+</html>
