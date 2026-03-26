@@ -1,12 +1,16 @@
 package com.quiz.controller;
 
 import com.quiz.security.CustomUserDetailsService;
+import com.quiz.model.Student;
+import com.quiz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /*
     Controller for authentication and authorization
@@ -15,15 +19,32 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AuthController {
 
     private final CustomUserDetailsService userDetailsService;
+    private final UserService userService;
 
     @Autowired
-    public AuthController(CustomUserDetailsService userDetailsService) {
+    public AuthController(CustomUserDetailsService userDetailsService, UserService userService) {
         this.userDetailsService = userDetailsService;
+        this.userService = userService;
     }
 
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("student", new Student());
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String registerStudent(@ModelAttribute("student") Student student) {
+        if (userService.emailExists(student.getEmail())) {
+            return "redirect:/register?error";
+        }
+        userService.registerStudent(student);
+        return "redirect:/register?success";
     }
 
     @GetMapping("/default")

@@ -15,6 +15,7 @@ Uses single table inheritance with discriminator column
     name = "role",
     discriminatorType = DiscriminatorType.STRING
 )
+@DiscriminatorValue("BASE")
 public abstract class User {
 
     @Id
@@ -47,7 +48,6 @@ public abstract class User {
         this.createdAt = LocalDateTime.now();
     }
 
-    // Abstract method to be implemented by subclasses
     public abstract String getDisplayRole();
 
     // Getters and Setters

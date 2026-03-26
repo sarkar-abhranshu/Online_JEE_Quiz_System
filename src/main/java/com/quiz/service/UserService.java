@@ -1,5 +1,6 @@
 package com.quiz.service;
 
+import com.quiz.model.Student;
 import com.quiz.model.User;
 import com.quiz.repository.UserRepository;
 import java.util.Optional;
@@ -46,5 +47,10 @@ public class UserService {
 
     public boolean emailExists(String email) {
         return userRepository.findByEmail(email).isPresent();
+    }
+
+    public Student registerStudent(Student student) {
+        saveUser(student);
+        return student;
     }
 }

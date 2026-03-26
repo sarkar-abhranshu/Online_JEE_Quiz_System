@@ -35,10 +35,19 @@ public class CustomUserDetailsService implements UserDetailsService {
                 )
             );
 
+        String authority = user.getRole();
+        if (authority == null || authority.isBlank()) {
+            authority = "STUDENT";
+        }
+        // Backward compatibility: some rows were stored with role/discriminator "User".
+        if (authority.equalsIgnoreCase("user")) {
+            authority = "STUDENT";
+        }
+
         return new org.springframework.security.core.userdetails.User(
             user.getEmail(),
             user.getPassword(),
-            Collections.singletonList(new SimpleGrantedAuthority(user.getRole()))
+            Collections.singletonList(new SimpleGrantedAuthority(authority))
         );
     }
 

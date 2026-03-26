@@ -38,7 +38,7 @@ public class SecurityConfig {
                 auth
                     .requestMatchers("/css/**", "/js/**", "/images/**")
                     .permitAll()
-                    .requestMatchers("/login", "/error")
+                    .requestMatchers("/login", "/error", "/register")
                     .permitAll()
                     .requestMatchers("/admin/**")
                     .hasAuthority("ADMIN")
