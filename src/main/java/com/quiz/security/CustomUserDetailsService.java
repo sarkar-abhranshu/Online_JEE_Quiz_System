@@ -36,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             );
 
         String authority = user.getRole();
-        if (authority == null || authority.isBlank()) {
+        if (authority == null || authority.trim().isEmpty()) {
             authority = "STUDENT";
         }
         // Backward compatibility: some rows were stored with role/discriminator "User".

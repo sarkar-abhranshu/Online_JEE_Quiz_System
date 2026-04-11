@@ -64,6 +64,11 @@ public class MCQQuestion extends Question {
         return evaluationStrategy;
     }
 
+    @Override
+    public String getCorrectAnswerText() {
+        return correctAnswer;
+    }
+
     // Getters and Setters
     public String getOptionA() {
         return optionA;

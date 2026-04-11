@@ -55,6 +55,9 @@ public abstract class Question {
     // Abstract method to get evaluation strategy
     public abstract EvaluationStrategy getEvaluationStrategy();
 
+    // Polymorphic display value for answer review screens
+    public abstract String getCorrectAnswerText();
+
     // Getters and Setters
     public Long getId() {
         return id;

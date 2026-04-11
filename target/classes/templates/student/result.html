@@ -53,25 +53,22 @@
                      th:classappend="${answer.isCorrect} ? 'correct' : 'incorrect'"
                      class="answer-card">
 
-                    <h5 th:text="${iterStat.count} + '. ' + ${answer.question.questionText}"></h5>
+                      <h5 th:text="${iterStat.count + '. ' + answer.question.questionText}"></h5>
 
                     <p class="answer-detail"
                        th:classappend="${answer.isCorrect} ? '' : 'wrong-answer'"
-                       th:text="'Your answer: ' + (${answer.studentAnswer} != null ? ${answer.studentAnswer} : 'Not answered')">
+                         th:text="${'Your answer: ' + (answer.studentAnswer != null ? answer.studentAnswer : 'Not answered')}">
                     </p>
 
                     <!-- Show correct answer only when wrong -->
                     <p th:if="${!answer.isCorrect}"
                        class="answer-detail correct-answer">
                         Correct answer:
-                        <span th:if="${answer.question.questionType == 'MCQ'}"
-                              th:text="${answer.question.correctAnswer}"></span>
-                        <span th:if="${answer.question.questionType == 'TRUE_FALSE'}"
-                              th:text="${answer.question.correctAnswer}"></span>
+                        <span th:text="${answer.question.correctAnswerText}"></span>
                     </p>
 
                     <p class="answer-detail"
-                       th:text="'Marks obtained: ' + ${answer.marksObtained} + ' / ' + ${answer.question.marks}">
+                         th:text="${'Marks obtained: ' + answer.marksObtained + ' / ' + answer.question.marks}">
                     </p>
                 </div>
             </div>

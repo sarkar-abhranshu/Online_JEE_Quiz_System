@@ -3,28 +3,44 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Login - Online Quiz System</title>
+        <title>Register - Online Quiz System</title>
         <link rel="stylesheet" th:href="@{/css/style.css}" />
     </head>
     <body class="login-page">
         <div class="login-container">
             <div class="login-box">
                 <h1>Online Quiz System</h1>
-                <h2>Login</h2>
+                <h2>Student Registration</h2>
+
+                <div th:if="${param.success}" class="alert alert-success">
+                    You have been registered successfully! Please login.
+                </div>
 
                 <div th:if="${param.error}" class="alert alert-error">
-                    Invalid email or password!
+                    Email already exists. Try logging in.
                 </div>
-                <div th:if="${param.logout}" class="alert alert-success">
-                    You have been logged out successfully.
-                </div>
-                <form th:action="@{/login}" method="post">
+
+                <form th:action="@{/register}" th:object="${student}" method="post">
                     <div class="form-group">
-                        <label for="username">Email:</label>
+                        <label for="name">Full Name:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            th:field="*{name}"
+                            required
+                            autofocus="autofocus"
+                            placeholder="Enter your full name"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
                         <input
                             type="email"
-                            id="username"
-                            name="username"
+                            id="email"
+                            name="email"
+                            th:field="*{email}"
                             required
                             placeholder="Enter your email"
                         />
@@ -36,38 +52,20 @@
                             type="password"
                             id="password"
                             name="password"
+                            th:field="*{password}"
                             required
                             placeholder="Enter your password"
                         />
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block">
-                        Login
+                        Register
                     </button>
                 </form>
-
                 <p class="text-center mt-3">
-                    Don't have an account? <a href="/register">Register here</a>
+                    Already have an account? <a th:href="@{/login}">Login here</a>
                 </p>
-
-                <div class="demo-credentials">
-                    <h3>Demo Credentials:</h3>
-                    <div class="credentials-box">
-                        <p><strong>Admin:</strong></p>
-                        <p>Email: admin@quiz.com</p>
-                        <p>Password: password</p>
-                    </div>
-                    <div class="credentials-box">
-                        <p><strong>Student:</strong></p>
-                        <p>Email: john@student.com</p>
-                        <p>Password: password</p>
-                    </div>
-                </div>
             </div>
         </div>
-
-        <footer>
-            <p>&copy; 2026 Online Quiz System - OOAD Project</p>
-        </footer>
     </body>
 </html>
