@@ -4,12 +4,18 @@ $mavenVersion = "3.9.13"
 $toolsDir = "$env:USERPROFILE\tools"
 $mavenBin = "$toolsDir\apache-maven-$mavenVersion\bin"
 
-$jdk = Get-ChildItem "C:\Program Files\Microsoft\jdk-25*" -Directory |
+$jdk = Get-ChildItem "C:\Program Files\Microsoft\jdk-25*" -Directory -ErrorAction SilentlyContinue |
     Sort-Object Name -Descending |
     Select-Object -First 1
 
 if (-not $jdk) {
-    throw "JDK 25 not found. Install Microsoft.OpenJDK.25 first."
+    $jdk = Get-ChildItem "C:\Program Files\Java\jdk-25*" -Directory -ErrorAction SilentlyContinue |
+        Sort-Object Name -Descending |
+        Select-Object -First 1
+}
+
+if (-not $jdk) {
+    throw "JDK 25 not found. Install a JDK 25 distribution first."
 }
 
 if (-not (Test-Path "$mavenBin\mvn.cmd")) {
