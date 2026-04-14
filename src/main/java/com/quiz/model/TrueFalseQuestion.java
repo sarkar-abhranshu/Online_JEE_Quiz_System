@@ -63,9 +63,9 @@ public class TrueFalseQuestion extends Question {
     }
 
     @Override
-    public String getCorrectAnswerText() {
+    public String getCorrectAnswerForDisplay() {
         if (correctBoolean == null) {
-            return "N/A";
+            return "";
         }
         return correctBoolean ? "True" : "False";
     }

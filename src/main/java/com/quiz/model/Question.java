@@ -55,8 +55,7 @@ public abstract class Question {
     // Abstract method to get evaluation strategy
     public abstract EvaluationStrategy getEvaluationStrategy();
 
-    // Polymorphic display value for answer review screens
-    public abstract String getCorrectAnswerText();
+    public abstract String getCorrectAnswerForDisplay();
 
     // Getters and Setters
     public Long getId() {
@@ -106,4 +105,5 @@ public abstract class Question {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
 }
