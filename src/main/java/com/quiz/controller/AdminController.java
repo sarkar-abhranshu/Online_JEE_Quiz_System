@@ -60,12 +60,29 @@ public class AdminController {
         Authentication authentication,
         RedirectAttributes redirectAttributes
     ) {
+        if (quiz.getDurationMinutes() == null || quiz.getDurationMinutes() < 1) {
+            redirectAttributes.addFlashAttribute(
+                "error",
+                "Please provide a valid quiz duration in minutes."
+            );
+            return "redirect:/admin/create-quiz";
+        }
+
         User admin = userDetailsService.getUserByEmail(
             authentication.getName()
         );
         quiz.setCreatedBy(admin);
 
-        Quiz savedQuiz = quizService.createQuiz(quiz);
+        Quiz savedQuiz;
+        try {
+            savedQuiz = quizService.createQuiz(quiz);
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute(
+                "error",
+                "Could not create quiz. Please check all fields and try again."
+            );
+            return "redirect:/admin/create-quiz";
+        }
 
         redirectAttributes.addFlashAttribute(
             "success",
