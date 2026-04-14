@@ -55,6 +55,8 @@ public abstract class Question {
     // Abstract method to get evaluation strategy
     public abstract EvaluationStrategy getEvaluationStrategy();
 
+    public abstract String getCorrectAnswerForDisplay();
+
     // Getters and Setters
     public Long getId() {
         return id;
@@ -103,4 +105,5 @@ public abstract class Question {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
 }

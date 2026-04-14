@@ -64,6 +64,11 @@ public class MCQQuestion extends Question {
         return evaluationStrategy;
     }
 
+    @Override
+    public String getCorrectAnswerForDisplay() {
+        return correctAnswer;
+    }
+
     // Getters and Setters
     public String getOptionA() {
         return optionA;
@@ -77,7 +82,7 @@ public class MCQQuestion extends Question {
         return optionB;
     }
 
-    public void setOptionB(String optionA) {
+    public void setOptionB(String optionB) {
         this.optionB = optionB;
     }
 
@@ -85,7 +90,7 @@ public class MCQQuestion extends Question {
         return optionC;
     }
 
-    public void setOptionC(String optionA) {
+    public void setOptionC(String optionC) {
         this.optionC = optionC;
     }
 
@@ -93,7 +98,7 @@ public class MCQQuestion extends Question {
         return optionD;
     }
 
-    public void setOptionD(String optionA) {
+    public void setOptionD(String optionD) {
         this.optionD = optionD;
     }
 
@@ -101,7 +106,7 @@ public class MCQQuestion extends Question {
         return correctAnswer;
     }
 
-    public void setCorrectAnswer(String optionA) {
+    public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 

@@ -6,6 +6,7 @@ import com.quiz.service.QuestionService;
 import com.quiz.service.QuizService;
 import com.quiz.service.ResultService;
 import com.quiz.singleton.QuizSessionManager;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,6 +97,7 @@ public class StudentController {
         sessionManager.startSession(student.getId(), quizId);
 
         List<Question> questions = questionService.getQuestionsByQuizId(quizId);
+        Collections.shuffle(questions);
 
         model.addAttribute("quiz", quiz);
         model.addAttribute("questions", questions);
@@ -143,7 +145,20 @@ public class StudentController {
         }
 
         // Submit and evaluate quiz
-        Result result = resultService.submitQuiz(attemptId, answers);
+        Result result;
+        try {
+            result = resultService.submitQuiz(attemptId, answers);
+        } catch (RuntimeException e) {
+            if ("Quiz already submitted".equals(e.getMessage())) {
+                Result existingResult = resultService.getResultByAttemptId(attemptId);
+                redirectAttributes.addFlashAttribute(
+                    "error",
+                    "This quiz was already submitted. Showing your result."
+                );
+                return "redirect:/student/result/" + existingResult.getId();
+            }
+            throw e;
+        }
 
         return "redirect:/student/result/" + result.getId();
     }
@@ -154,9 +169,35 @@ public class StudentController {
         List<Answer> answers = resultService.getAnswersByAttemptId(
             result.getAttempt().getId()
         );
+        Map<Long, String> correctAnswerMap = new HashMap<>();
+
+        for (Answer answer : answers) {
+            Question question = answer.getQuestion();
+            Long questionId = question.getId();
+            String questionType = questionService.getQuestionTypeById(questionId);
+
+            if ("MCQ".equals(questionType)) {
+                String correctAnswer = questionService.getCorrectAnswerById(questionId);
+                correctAnswerMap.put(
+                    questionId,
+                    correctAnswer != null ? correctAnswer : ""
+                );
+            } else if ("TRUE_FALSE".equals(questionType)) {
+                Boolean correctBoolean = questionService.getCorrectBooleanById(
+                    questionId
+                );
+                correctAnswerMap.put(
+                    questionId,
+                    (correctBoolean != null && correctBoolean) ? "True" : "False"
+                );
+            } else {
+                correctAnswerMap.put(questionId, "");
+            }
+        }
 
         model.addAttribute("result", result);
         model.addAttribute("answers", answers);
+        model.addAttribute("correctAnswerMap", correctAnswerMap);
         return "student/result";
     }
 

@@ -45,7 +45,7 @@
 
                     <!-- MCQ options -->
                     <div th:if="${question.questionType == 'MCQ'}">
-                        <ul class="options-list">
+                        <ul class="options-list mcq-options-list">
                             <li>
                                 <label>
                                     <input type="radio"
@@ -106,7 +106,7 @@
 
                 <!-- Submit -->
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Submit Quiz</button>
+                    <button type="submit" class="btn btn-primary" id="submit-quiz-btn">Submit Quiz</button>
                 </div>
             </form>
         </div>
@@ -116,5 +116,27 @@
         </footer>
 
         <script th:src="@{/js/timer.js}"></script>
+        <script>
+            (function () {
+                const form = document.getElementById('quiz-form');
+                const submitBtn = document.getElementById('submit-quiz-btn');
+                if (!form || !submitBtn) return;
+
+                form.addEventListener('submit', function () {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Submitting...';
+                });
+
+                const mcqLists = document.querySelectorAll('.mcq-options-list');
+                mcqLists.forEach((list) => {
+                    const items = Array.from(list.children);
+                    for (let i = items.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [items[i], items[j]] = [items[j], items[i]];
+                    }
+                    items.forEach((item) => list.appendChild(item));
+                });
+            })();
+        </script>
     </body>
 </html>

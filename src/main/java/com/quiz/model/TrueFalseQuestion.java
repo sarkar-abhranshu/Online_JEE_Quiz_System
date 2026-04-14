@@ -62,6 +62,14 @@ public class TrueFalseQuestion extends Question {
         return evaluationStrategy;
     }
 
+    @Override
+    public String getCorrectAnswerForDisplay() {
+        if (correctBoolean == null) {
+            return "";
+        }
+        return correctBoolean ? "True" : "False";
+    }
+
     // Getters and Setters
     public Boolean getCorrectBoolean() {
         return correctBoolean;

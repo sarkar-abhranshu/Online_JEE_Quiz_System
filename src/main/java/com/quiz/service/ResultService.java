@@ -113,6 +113,14 @@ public class ResultService {
         return resultRepository.findByQuizId(quizId);
     }
 
+    public Result getResultByAttemptId(Long attemptId) {
+        return resultRepository
+            .findByAttemptId(attemptId)
+            .orElseThrow(() ->
+                new RuntimeException("Result not found for attempt id: " + attemptId)
+            );
+    }
+
     public List<Answer> getAnswersByAttemptId(Long attemptId) {
         return answerRepository.findByAttemptId(attemptId);
     }

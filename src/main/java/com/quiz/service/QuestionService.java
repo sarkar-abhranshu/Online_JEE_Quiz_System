@@ -44,4 +44,16 @@ public class QuestionService {
     public Question updateQuestion(Question question) {
         return questionRepository.save(question);
     }
+
+    public String getQuestionTypeById(Long questionId) {
+        return questionRepository.findQuestionTypeById(questionId);
+    }
+
+    public String getCorrectAnswerById(Long questionId) {
+        return questionRepository.findCorrectAnswerById(questionId);
+    }
+
+    public Boolean getCorrectBooleanById(Long questionId) {
+        return questionRepository.findCorrectBooleanById(questionId);
+    }
 }

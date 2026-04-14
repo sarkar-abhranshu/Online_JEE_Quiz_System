@@ -57,17 +57,16 @@
 
                     <p class="answer-detail"
                        th:classappend="${answer.isCorrect} ? '' : 'wrong-answer'"
-                       th:text="'Your answer: ' + (${answer.studentAnswer} != null ? ${answer.studentAnswer} : 'Not answered')">
+                       th:text="'Your answer: ' + (${answer.studentAnswer != null} ? ${answer.studentAnswer} : 'Not answered')">
                     </p>
 
                     <!-- Show correct answer only when wrong -->
                     <p th:if="${!answer.isCorrect}"
                        class="answer-detail correct-answer">
                         Correct answer:
-                        <span th:if="${answer.question.questionType == 'MCQ'}"
-                              th:text="${answer.question.correctAnswer}"></span>
-                        <span th:if="${answer.question.questionType == 'TRUE_FALSE'}"
-                              th:text="${answer.question.correctAnswer}"></span>
+                        <span
+                            th:text="${correctAnswerMap != null and #maps.containsKey(correctAnswerMap, answer.question.id) and correctAnswerMap[answer.question.id] != null and !#strings.isEmpty(correctAnswerMap[answer.question.id])} ? ${correctAnswerMap[answer.question.id]} : 'Not available'"
+                        ></span>
                     </p>
 
                     <p class="answer-detail"

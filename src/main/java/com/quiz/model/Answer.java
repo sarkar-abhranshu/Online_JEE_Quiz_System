@@ -1,6 +1,7 @@
 package com.quiz.model;
 
 import jakarta.persistence.*;
+import java.lang.reflect.Method;
 
 /*
     Represents student's answer to question
@@ -89,5 +90,33 @@ public class Answer {
 
     public void setMarksObtained(Integer marksObtained) {
         this.marksObtained = marksObtained;
+    }
+
+    @Transient
+    public String getCorrectAnswerForDisplay() {
+        if (question == null) {
+            return "";
+        }
+
+        try {
+            Method questionTypeMethod = question.getClass().getMethod("getQuestionType");
+            String questionType = (String) questionTypeMethod.invoke(question);
+
+            if ("MCQ".equals(questionType)) {
+                Method correctAnswerMethod = question.getClass().getMethod("getCorrectAnswer");
+                Object value = correctAnswerMethod.invoke(question);
+                return value == null ? "" : String.valueOf(value);
+            }
+
+            if ("TRUE_FALSE".equals(questionType)) {
+                Method correctBooleanMethod = question.getClass().getMethod("getCorrectBoolean");
+                Object value = correctBooleanMethod.invoke(question);
+                if (value instanceof Boolean boolValue) {
+                    return boolValue ? "True" : "False";
+                }
+            }
+        } catch (Exception ignored) {}
+
+        return "";
     }
 }
