@@ -198,6 +198,27 @@ public class AdminController {
         return "redirect:/admin/dashboard";
     }
 
+    @PostMapping("/delete-quiz/{quizId}")
+    public String deleteQuiz(
+        @PathVariable Long quizId,
+        RedirectAttributes redirectAttributes
+    ) {
+        try {
+            quizService.deleteQuiz(quizId);
+            redirectAttributes.addFlashAttribute(
+                "success",
+                "Quiz deleted successfully!"
+            );
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute(
+                "error",
+                "Could not delete quiz. Please try again."
+            );
+        }
+
+        return "redirect:/admin/dashboard";
+    }
+
     @PostMapping("/delete-question/{questionId}")
     public String deleteQuestion(
         @PathVariable Long questionId,

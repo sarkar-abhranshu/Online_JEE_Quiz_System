@@ -113,6 +113,20 @@
                                     ></span>
                                 </button>
                             </form>
+
+                            <form
+                                th:action="@{/admin/delete-quiz/{id}(id=${quiz.id})}"
+                                method="post"
+                                style="display: inline"
+                            >
+                                <button
+                                    type="submit"
+                                    class="btn btn-small btn-danger"
+                                    onclick="return confirm('Delete this quiz and all related attempts/results?')"
+                                >
+                                    Delete
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
