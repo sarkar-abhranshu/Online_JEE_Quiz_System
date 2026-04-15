@@ -53,7 +53,7 @@
                      th:classappend="${answer.isCorrect} ? 'correct' : 'incorrect'"
                      class="answer-card">
 
-                    <h5 th:text="${iterStat.count} + '. ' + ${answer.question.questionText}"></h5>
+                      <h5 th:text="${iterStat.count + '. ' + answer.question.questionText}"></h5>
 
                     <p class="answer-detail"
                        th:classappend="${answer.isCorrect} ? '' : 'wrong-answer'"
@@ -70,7 +70,7 @@
                     </p>
 
                     <p class="answer-detail"
-                       th:text="'Marks obtained: ' + ${answer.marksObtained} + ' / ' + ${answer.question.marks}">
+                         th:text="${'Marks obtained: ' + answer.marksObtained + ' / ' + answer.question.marks}">
                     </p>
                 </div>
             </div>
