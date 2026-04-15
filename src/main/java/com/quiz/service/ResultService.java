@@ -58,6 +58,8 @@ public class ResultService {
 
         int totalScore = 0;
         int totalMarks = quiz.getTotalMarks();
+        int negativeMarksPerWrong =
+            quiz.getNegativeMarks() != null ? quiz.getNegativeMarks() : 0;
 
         // Evaluating each answer
         for (Question question : questions) {
@@ -72,7 +74,8 @@ public class ResultService {
                 answer.setMarksObtained(question.getMarks());
                 totalScore += question.getMarks();
             } else {
-                answer.setMarksObtained(0);
+                answer.setMarksObtained(-negativeMarksPerWrong);
+                totalScore -= negativeMarksPerWrong;
             }
 
             answerRepository.save(answer);

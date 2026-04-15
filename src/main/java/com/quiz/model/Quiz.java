@@ -25,6 +25,9 @@ public class Quiz {
     @Column(name = "duration_minutes", nullable = false)
     private Integer durationMinutes;
 
+    @Column(name = "negative_marks", nullable = false)
+    private Integer negativeMarks = 0;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
@@ -62,6 +65,7 @@ public class Quiz {
         this.title = title;
         this.description = description;
         this.durationMinutes = durationMinutes;
+        this.negativeMarks = 0;
         this.createdBy = createdBy;
         this.isActive = true;
         this.createdAt = LocalDateTime.now();
@@ -69,6 +73,13 @@ public class Quiz {
 
     public int getTotalMarks() {
         return questions.stream().mapToInt(Question::getMarks).sum();
+    }
+
+    public String getNegativeMarkingDisplay() {
+        if (negativeMarks == null || negativeMarks <= 0) {
+            return "None";
+        }
+        return "-" + negativeMarks + " per wrong answer";
     }
 
     // Getters and Setters
@@ -102,6 +113,14 @@ public class Quiz {
 
     public void setDurationMinutes(Integer durationMinutes) {
         this.durationMinutes = durationMinutes;
+    }
+
+    public Integer getNegativeMarks() {
+        return negativeMarks;
+    }
+
+    public void setNegativeMarks(Integer negativeMarks) {
+        this.negativeMarks = negativeMarks;
     }
 
     public User getCreatedBy() {

@@ -68,6 +68,10 @@ public class AdminController {
             return "redirect:/admin/create-quiz";
         }
 
+        if (quiz.getNegativeMarks() == null || quiz.getNegativeMarks() < 0) {
+            quiz.setNegativeMarks(0);
+        }
+
         User admin = userDetailsService.getUserByEmail(
             authentication.getName()
         );

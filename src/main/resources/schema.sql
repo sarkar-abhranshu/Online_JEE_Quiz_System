@@ -22,6 +22,7 @@ CREATE TABLE quizzes(
     title VARCHAR(255) NOT NULL,
     description TEXT,
     duration_minutes INT NOT NULL,
+    negative_marks INT NOT NULL DEFAULT 0,
     created_by BIGINT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     is_active BOOLEAN DEFAULT TRUE,

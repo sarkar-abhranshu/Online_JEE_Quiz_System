@@ -9,7 +9,7 @@
     <body>
         <nav class="navbar">
             <div class="nav-container">
-                <h1>Online Quiz System</h1>
+                <h1>Online JEE Quiz System</h1>
                 <div class="nav-links">
                     <a th:href="@{/admin/dashboard}" class="btn btn-secondary"
                         >Back to Dashboard</a
@@ -72,6 +72,19 @@
                         />
                     </div>
 
+                    <div class="form-group">
+                        <label for="negativeMarks">Negative Marks Per Wrong Answer</label>
+                        <input
+                            type="number"
+                            id="negativeMarks"
+                            th:field="*{negativeMarks}"
+                            min="0"
+                            value="0"
+                            required
+                            placeholder="Enter negative marks"
+                        />
+                    </div>
+
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary">
                             Create Quiz & Add Questions
@@ -87,7 +100,7 @@
         </div>
 
         <footer>
-            <p>&copy; 2026 Online Quiz System</p>
+            <p>&copy; 2026 Online JEE Quiz System</p>
         </footer>
     </body>
 </html>

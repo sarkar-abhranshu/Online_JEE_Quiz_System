@@ -9,7 +9,7 @@
     <body>
         <nav class="navbar">
             <div class="nav-container">
-                <h1>Online Quiz System</h1>
+                <h1>Online JEE Quiz System</h1>
                 <div class="nav-links">
                     <a th:href="@{/student/dashboard}" class="btn btn-secondary">Dashboard</a>
                     <a th:href="@{/logout}" class="btn btn-secondary">Logout</a>
@@ -50,6 +50,10 @@
                             <strong>Total Marks:</strong>
                             <span th:text="${quiz.totalMarks}"></span>
                         </p>
+                        <p>
+                            <strong>Negative Marking:</strong>
+                            <span th:text="${quiz.negativeMarkingDisplay}"></span>
+                        </p>
                     </div>
 
                     <div class="quiz-actions">
@@ -62,7 +66,7 @@
         </div>
 
         <footer>
-            <p>&copy; 2026 Online Quiz System</p>
+            <p>&copy; 2026 Online JEE Quiz System</p>
         </footer>
     </body>
 </html>
