@@ -17,9 +17,9 @@
     <groupId>com.quiz</groupId>
     <artifactId>online-quiz-system</artifactId>
     <version>1.0.0</version>
-    <name>Online Quiz System</name>
+    <name>Online JEE Quiz System</name>
     <description
-    >Online Quiz System with Spring Boot and MVC Architecture</description>
+    >Online JEE Quiz System with Spring Boot and MVC Architecture</description>
 
     <properties>
         <java.version>25</java.version>

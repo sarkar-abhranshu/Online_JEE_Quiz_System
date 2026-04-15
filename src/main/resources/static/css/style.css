@@ -1,5 +1,5 @@
 /* =============================================
-   Online Quiz System - Global Stylesheet
+   Online JEE Quiz System - Global Stylesheet
    ============================================= */
 
 /* --- Reset & Base --- */
@@ -306,6 +306,16 @@ a {
     color: #7f8c8d;
     margin-bottom: 1.5rem;
     font-weight: 400;
+}
+
+.auth-switch-link {
+    color: #e67e22;
+    font-weight: 600;
+}
+
+.auth-switch-link:hover {
+    color: #d35400;
+    text-decoration: underline;
 }
 
 .demo-credentials {

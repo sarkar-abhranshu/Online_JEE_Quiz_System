@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Login - Online Quiz System</title>
+        <title>Login - Online JEE Quiz System</title>
         <link rel="stylesheet" th:href="@{/css/style.css}" />
     </head>
     <body class="login-page">
         <div class="login-container">
             <div class="login-box">
-                <h1>Online Quiz System</h1>
+                <h1>Online JEE Quiz System</h1>
                 <h2>Login</h2>
 
                 <div th:if="${param.error}" class="alert alert-error">
@@ -47,27 +47,15 @@
                 </form>
 
                 <p class="text-center mt-3">
-                    Don't have an account? <a href="/register">Register here</a>
+                    Don't have an account?
+                    <a href="/register" class="auth-switch-link">Register here</a>
                 </p>
 
-                <div class="demo-credentials">
-                    <h3>Demo Credentials:</h3>
-                    <div class="credentials-box">
-                        <p><strong>Admin:</strong></p>
-                        <p>Email: admin@quiz.com</p>
-                        <p>Password: password</p>
-                    </div>
-                    <div class="credentials-box">
-                        <p><strong>Student:</strong></p>
-                        <p>Email: john@student.com</p>
-                        <p>Password: password</p>
-                    </div>
-                </div>
             </div>
         </div>
 
         <footer>
-            <p>&copy; 2026 Online Quiz System - OOAD Project</p>
+            <p>&copy; 2026 Online JEE Quiz System - OOAD Project</p>
         </footer>
     </body>
 </html>
