@@ -12,8 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 /*
-    Spring security config
-    implements role-based access control.
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Centralizes security wiring (auth manager, filter chain, encoder).
+    - DIP (Dependency Inversion): Relies on UserDetailsService abstraction through injected CustomUserDetailsService.
+    - GRASP Indirection: Encapsulates framework-specific authorization rules away from controllers/business services.
 */
 @Configuration
 @EnableWebSecurity

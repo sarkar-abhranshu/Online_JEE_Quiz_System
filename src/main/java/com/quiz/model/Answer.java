@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import java.lang.reflect.Method;
 
 /*
-    Represents student's answer to question
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Encapsulates answer state for one attempted question.
+    - GRASP Information Expert: Stores correctness/marks data close to the answer entity that owns it.
 */
 @Entity
 @Table(name = "answers")

@@ -8,7 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /*
-    Repository interface for Question entity.
+    SOLID/GRASP highlights:
+    - DIP (Dependency Inversion): Services depend on this interface abstraction instead of concrete DB access code.
+    - GRASP Pure Fabrication: Data retrieval logic is fabricated into repository layer to keep domain logic cohesive.
 */
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {

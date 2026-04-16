@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /*
-    Controller for authentication and authorization
+    SOLID/GRASP highlights:
+    - GRASP Controller: Handles auth-related HTTP routes (/login, /register, /default).
+    - SRP (Single Responsibility): Coordinates authentication and registration flow only.
+    - DIP (Dependency Inversion): Depends on service abstractions via constructor injection (UserService, CustomUserDetailsService).
 */
 @Controller
 public class AuthController {

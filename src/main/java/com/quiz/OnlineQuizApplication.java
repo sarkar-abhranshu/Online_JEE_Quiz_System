@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /*
-    Main Spring Boot App Class
-    Entry point for Online quiz system
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Contains only application bootstrap/entry-point responsibility.
 */
 @SpringBootApplication
 public class OnlineQuizApplication {

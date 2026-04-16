@@ -12,7 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /*
-    Service class for Quiz-related operations
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Encapsulates quiz lifecycle and analytics use-cases.
+    - DIP (Dependency Inversion): Depends on QuizRepository/ResultRepository abstractions.
+    - GRASP Indirection: Keeps controllers decoupled from persistence/query details.
 */
 @Service
 @Transactional

@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /*
-    Controller for Admin operations
+    SOLID/GRASP highlights:
+    - GRASP Controller: This class receives and coordinates /admin web requests.
+    - SRP (Single Responsibility): Focuses on admin flow orchestration, while business rules stay in services.
+    - DIP (Dependency Inversion): Depends on abstractions/services via constructor injection (QuizService, QuestionService, CustomUserDetailsService).
+    - GRASP Indirection + Creator: Delegates question creation to QuestionFactory in addQuestion(...) to avoid direct concrete construction here.
 */
 @Controller
 @RequestMapping("/admin")

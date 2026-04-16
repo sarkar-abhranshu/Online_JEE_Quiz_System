@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /*
-    Service class for User-related operations
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Handles user registration and lookup operations.
+    - DIP (Dependency Inversion): Depends on UserRepository and PasswordEncoder abstractions.
+    - GRASP Indirection: Separates controllers from user persistence and password policy details.
 */
 @Service
 @Transactional

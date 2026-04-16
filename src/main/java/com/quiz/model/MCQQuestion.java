@@ -5,7 +5,11 @@ import com.quiz.strategy.MCQEvaluationStrategy;
 import jakarta.persistence.*;
 
 /*
-    MCQ implementation
+    SOLID/GRASP highlights:
+    - LSP (Liskov Substitution): MCQQuestion can be treated polymorphically as Question.
+    - OCP (Open/Closed Principle): Adds a new concrete question behavior by extending Question.
+    - Strategy pattern usage: Holds EvaluationStrategy to vary evaluation logic independently.
+    - GRASP Polymorphism: evaluateAnswer(...) is implemented by type-specific behavior.
 */
 @Entity
 @DiscriminatorValue("MCQ")

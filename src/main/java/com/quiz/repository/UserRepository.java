@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /*
-    Repository interface for User entity
+    SOLID/GRASP highlights:
+    - DIP (Dependency Inversion): Authentication/user services depend on this abstraction for user lookups.
+    - GRASP Pure Fabrication: Repository centralizes persistence concerns away from domain and controller logic.
 */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

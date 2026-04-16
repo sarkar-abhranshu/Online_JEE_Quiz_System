@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 /**
  * Backward-compatibility entity for older rows where discriminator/role was saved as "User".
  * Treats such users as students for display and login mapping.
+ * SOLID highlight: LSP (Liskov Substitution) - LegacyUser remains substitutable for User.
  */
 @Entity
 @DiscriminatorValue("User")

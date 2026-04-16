@@ -3,8 +3,11 @@ package com.quiz.strategy;
 import com.quiz.model.Question;
 
 /*
-    Strategy pattern interface for question evaluation
-    Different evaluation strategies can be implemented without modifying existing code.
+    SOLID/GRASP highlights:
+    - OCP (Open/Closed Principle): New evaluation algorithms are added as new strategy implementations.
+    - DIP (Dependency Inversion): Clients can depend on this abstraction instead of concrete evaluators.
+    - ISP (Interface Segregation): Provides a focused contract containing only evaluation behavior.
+    - GRASP Polymorphism: Different strategies provide behavior through the same interface.
 */
 
 public interface EvaluationStrategy {

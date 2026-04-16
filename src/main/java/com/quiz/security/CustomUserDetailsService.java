@@ -11,8 +11,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /*
-    Custom UserDetailsService for Spring Security.
-    Loads user-specific data during authentication.
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Focuses on mapping application User data to Spring Security user details.
+    - DIP (Dependency Inversion): Depends on UserRepository abstraction injected via constructor.
+    - GRASP Indirection: Acts as an adapter/indirection layer between domain user model and framework authentication contract.
 */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

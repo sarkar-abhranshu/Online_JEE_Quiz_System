@@ -6,7 +6,11 @@ import java.time.LocalDateTime;
 import org.springframework.cglib.core.Local;
 
 /*
-    Abstract base class for all question types
+    SOLID/GRASP highlights:
+    - OCP (Open/Closed Principle): New question types are added by subclassing without changing this base contract.
+    - LSP (Liskov Substitution): Concrete questions are substitutable through the Question abstraction.
+    - DIP (Dependency Inversion): Clients can depend on Question and EvaluationStrategy abstractions.
+    - GRASP Polymorphism: Subclasses provide type-specific answer evaluation.
 */
 @Entity
 @Table(name = "questions")

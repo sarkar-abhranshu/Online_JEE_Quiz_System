@@ -7,8 +7,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.cglib.core.Local;
 
 /*
-    Singleton Pattern implementation for managing quiz sessions.
-    Ensures only 1 instance of session manager exists throughout the app.
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Manages in-memory quiz session timing state only.
+    - GRASP Pure Fabrication: Session-tracking concern is isolated in a dedicated utility-like component.
+    - Design pattern note: Singleton ensures one shared session manager instance.
 */
 public class QuizSessionManager {
 

@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-    Represent a student's attempt at a quiz
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Represents one quiz attempt lifecycle and its related answers.
+    - GRASP Information Expert: Owns attempt timing/completion state data.
 */
 @Entity
 @Table(name = "quiz_attempts")

@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 /*
-Abstract base class representing User in the system
-Uses single table inheritance with discriminator column
+    SOLID/GRASP highlights:
+    - OCP (Open/Closed Principle): New user roles can extend User without changing existing client code.
+    - LSP (Liskov Substitution): Role-specific users (Admin/Student/LegacyUser) are substitutable as User.
+    - GRASP Polymorphism: getDisplayRole() is defined as an abstract role-specific behavior.
 */
 
 @Entity

@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 /*
-    Represents result of quiz attempt
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Encapsulates the persisted outcome of a submitted attempt.
+    - GRASP Information Expert: Computes/stores percentage from score and total marks in the result domain object.
 */
 @Entity
 @Table(name = "results")

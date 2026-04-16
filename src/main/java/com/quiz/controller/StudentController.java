@@ -18,7 +18,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /*
-    Controller for Student operations
+    SOLID/GRASP highlights:
+    - GRASP Controller: Coordinates /student use-cases and request flow.
+    - SRP (Single Responsibility): Keeps HTTP orchestration here; quiz/result logic is delegated to services.
+    - DIP (Dependency Inversion): Uses constructor-injected service dependencies.
+    - GRASP Indirection: Delegates timing/session concerns to QuizSessionManager and persistence/business logic to ResultService/QuizService.
 */
 @Controller
 @RequestMapping("/student")

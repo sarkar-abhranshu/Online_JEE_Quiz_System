@@ -3,9 +3,10 @@ package com.quiz.factory;
 import com.quiz.model.*;
 
 /*
-    Factory pattern implementation for creating question objects.
-    Provides a centralized way to create different question types
-    without exposing the instantiation logic to the client.
+    SOLID/GRASP highlights:
+    - OCP (Open/Closed Principle): New question types can be added by extending creation branches without changing clients.
+    - DIP support: Callers depend on the Question abstraction returned by this factory instead of concrete classes.
+    - GRASP Creator + Indirection: Centralizes creation responsibility and decouples controllers/services from constructor details.
 */
 public class QuestionFactory {
 

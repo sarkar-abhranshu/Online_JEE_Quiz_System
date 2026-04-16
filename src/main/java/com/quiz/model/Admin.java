@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-    Admin class extending User
+    SOLID/GRASP highlights:
+    - LSP (Liskov Substitution): Admin is a valid specialization of User and can be used anywhere User is expected.
+    - OCP (Open/Closed Principle): Adds role-specific behavior (getDisplayRole) via extension, not modification of User.
 */
 @Entity
 @DiscriminatorValue("ADMIN")

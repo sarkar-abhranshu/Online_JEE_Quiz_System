@@ -12,7 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /*
-    Service class for Result and quiz submission operations.
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Owns quiz-attempt lifecycle and submission/result creation flow.
+    - DIP (Dependency Inversion): Depends on repository abstractions (ResultRepository, QuizAttemptRepository, AnswerRepository).
+    - GRASP Information Expert: Uses Question polymorphism (evaluateAnswer) and quiz/attempt data to calculate scoring.
+    - GRASP Creator: Creates Answer and Result objects because it has the required contextual data.
 */
 @Service
 @Transactional

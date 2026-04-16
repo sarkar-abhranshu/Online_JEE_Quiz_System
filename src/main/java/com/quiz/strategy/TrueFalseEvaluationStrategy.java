@@ -4,7 +4,10 @@ import com.quiz.model.Question;
 import com.quiz.model.TrueFalseQuestion;
 
 /*
-    Concrete Strategy for evaluating True/False questions;
+    SOLID/GRASP highlights:
+    - OCP (Open/Closed Principle): Adds True/False evaluation behavior via extension.
+    - LSP (Liskov Substitution): Works wherever EvaluationStrategy is required.
+    - GRASP Polymorphism: Implements evaluate(...) with True/False-specific rules.
 */
 public class TrueFalseEvaluationStrategy implements EvaluationStrategy {
 

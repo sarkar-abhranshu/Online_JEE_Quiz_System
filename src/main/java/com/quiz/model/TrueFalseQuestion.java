@@ -5,7 +5,11 @@ import com.quiz.strategy.TrueFalseEvaluationStrategy;
 import jakarta.persistence.*;
 
 /*
-    True/False Question implementation
+    SOLID/GRASP highlights:
+    - LSP (Liskov Substitution): TrueFalseQuestion can be used wherever Question is required.
+    - OCP (Open/Closed Principle): Adds behavior by extending Question rather than modifying existing types.
+    - Strategy pattern usage: Holds EvaluationStrategy to keep evaluation behavior swappable.
+    - GRASP Polymorphism: Provides concrete answer evaluation for this specific type.
 */
 @Entity
 @DiscriminatorValue("TRUE_FALSE")

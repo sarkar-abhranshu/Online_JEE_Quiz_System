@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-    Student class extending User
+    SOLID/GRASP highlights:
+    - LSP (Liskov Substitution): Student is substitutable for User in shared workflows.
+    - OCP (Open/Closed Principle): Role-specific behavior is added through extension of User.
 */
 @Entity
 @DiscriminatorValue("STUDENT")

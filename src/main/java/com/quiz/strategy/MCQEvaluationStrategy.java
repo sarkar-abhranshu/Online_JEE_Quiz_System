@@ -4,7 +4,10 @@ import com.quiz.model.MCQQuestion;
 import com.quiz.model.Question;
 
 /*
-    Concrete Strategy for evaluating MCQ questions.
+    SOLID/GRASP highlights:
+    - OCP (Open/Closed Principle): Adds MCQ evaluation behavior without changing existing clients.
+    - LSP (Liskov Substitution): Usable anywhere EvaluationStrategy is expected.
+    - GRASP Polymorphism: Provides type-specific implementation of evaluate(...).
 */
 public class MCQEvaluationStrategy implements EvaluationStrategy {
 

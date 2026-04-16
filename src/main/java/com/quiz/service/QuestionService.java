@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /*
-    Service class for Question-related operations.
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Handles question-related application operations.
+    - DIP (Dependency Inversion): Depends on QuestionRepository abstraction.
+    - GRASP Indirection: Provides an application-service layer between controllers and repositories.
 */
 @Service
 @Transactional

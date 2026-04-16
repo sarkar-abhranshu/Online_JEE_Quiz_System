@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-    Quiz entity representing quiz in the system
+    SOLID/GRASP highlights:
+    - SRP (Single Responsibility): Represents quiz state/relationships and quiz-level derived data (e.g., total marks).
+    - GRASP Information Expert: Computes values such as total marks using data it owns (questions).
 */
 @Entity
 @Table(name = "quizzes")

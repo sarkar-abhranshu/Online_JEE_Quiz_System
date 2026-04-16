@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /*
-    Repository interface for Result entity
+    SOLID/GRASP highlights:
+    - DIP (Dependency Inversion): Services rely on this repository abstraction to access Result data.
+    - GRASP Pure Fabrication: Persistence responsibility is intentionally separated from domain objects.
 */
 @Repository
 public interface ResultRepository extends JpaRepository<Result, Long> {
